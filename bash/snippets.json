@@ -1,0 +1,76 @@
+{
+	"shebang": {
+		"scope": "shellscript",
+		"prefix": "snip_shebang",
+		"body": [
+			"#!/usr/bin/env bash",
+			"set -euo pipefail"
+		],
+		"description": "Simple shebang for bash"
+	},
+	"check dependencies": {
+		"scope": "shellscript",
+		"prefix": "snip_ensure-deps",
+		"body": [
+			"if ! ( which $1 >/dev/null && which $2 >/dev/null) ; then",
+    		"\techo \"ERROR: '$3' and '$4' are required for this script\" >&2",
+			"\texit 1",
+			"fi$0"
+		],
+		"description": "Check for dependencies needed in script"
+	},
+	"loop over lines": {
+		"scope": "shellscript",
+		"prefix": "snip_foreach",
+		"body": [    
+			"while read -r LINE; do",
+			"\techo \"Line: \\${LINE}\"",
+			"done <<< \"${2:LIST}\""
+		],
+		"description": "Loop over lines in bash"
+	},
+	"nix shebang": {
+		"scope": "shellscript",
+		"prefix": "snip_nix-shebang",
+		"body": [
+			"#! /usr/bin/env nix-shell",
+			"#! nix-shell -i bash -p ${1:programm}",
+			"#! nix-shell -I nixpkgs=${2:https://github.com/NixOS/nixpkgs/archive/aed4b19d312525ae7ca9bceb4e1efe3357d0e2eb.tar.gz}"
+		],
+		"description": "Shebang for running with nix shell"
+	},
+	"run as root": {
+		"scope": "shellscript",
+		"prefix": "snip_ensure-root",
+		"body": [
+			"if [ \"\\$EUID\" -ne 0 ]; then",
+			"\techo >&2 \"Root permissions are required to run this script. Please run this script as root.\"",
+			"\texit 2",
+			"fi"
+		],
+		"description": "Check if script is running with root permissions"
+	},
+	"run in tmpdir": {
+		"scope": "shellscript",
+		"prefix": "snip_tempdir",
+		"body": [
+			"workdir=$(mktemp -d)",
+			"trap 'echo \"Cleaning up temporary directory: \\$workdir\";rm -rf -- \"\\$workdir\"' EXIT",
+			"cd \"\\$workdir\"",
+			"$0",
+			"cd \"\\$OLDPWD\""
+			],
+		"description": "Create a temporary directory to do stuff in."
+	},
+	"capture retcode and output of command": {
+		"scope": "shellscript",
+		"prefix": "snip_run_command",
+		"body": [
+	        "if ! ${1:MY_VAR}=\\$(${2:mycommand}); then",
+			"\techo \" --> command failed\"",
+			"\texit 1",
+			"fi"
+			],
+		"description": "Run a command and capture both stdout as well as the returncode"
+	}
+}

@@ -1,0 +1,15 @@
+
+{
+	"shebang": {
+		"scope": "puppet",
+		"prefix": "snip_foreach",
+		"body": [
+			"\\$items = ['item1', 'item2']",
+      		"\\$items.each |String \\$item| {",
+      		"  # do stuff",
+      		"}"
+		],
+		"description": "Simple loop over array in puppet"
+	}
+}
+
