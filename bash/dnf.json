@@ -1,0 +1,10 @@
+
+{
+	"dnf_file_listsudo": {
+		"scope": "shellscript",
+		"prefix": "cmd_dnf_list_files",
+
+		"body": "sudo dnf repoquery -l <Packagename>",
+		"description": "List all the files a dnf package deploys"
+	}
+}
