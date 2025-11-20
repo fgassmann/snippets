@@ -1,0 +1,16 @@
+{
+	"apt_file_list_installed": {
+		"scope": "shellscript",
+		"prefix": "cmd_apt_list_files_installed",
+
+		"body": "dpkg -L package",
+		"description": "List all the files a apt package installed on your system"
+	},
+    "apt_file_list_deb": {
+		"scope": "shellscript",
+		"prefix": "cmd_apt_list_files_installed",
+
+		"body": "dpkg --contents package.deb",
+		"description": "List all the files a apt package will install on your system\n alternatively `apt-file list package` for packages from repositories"
+	}
+}
