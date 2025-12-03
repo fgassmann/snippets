@@ -1,0 +1,52 @@
+{
+  "homemanager-shared-module": {
+    "prefix": [
+      "snip-hm-shared"
+    ],
+    "scope": "nix",
+    "body": [
+      "home-manager.sharedModules = [",
+      "  {",
+      "  }",
+      "];"
+    ],
+    "description": "Default Homemanager module for all users"
+  },
+  "nix-merged": {
+    "scope": "nix",
+    "body": [
+      " config = lib.mkMerge [",
+      "   (lib.mkIf cfg.<>.enable {",
+      "     environment.systemPackages = with pkgs; [ naps2 ];",
+      "   })",
+      "   (lib.mkIf cfg.<>.enable {})",
+      " ];"
+    ],
+    "description": "Merge multiple configurations into one"
+  },
+  "nix-module": {
+    "prefix": [
+      "nix-module"
+    ],
+    "scope": "nix",
+    "body": [
+      "{ config, lib, options, pkgs, ... }:",
+      "let",
+      "  cfg = config.fgassmann.{{module}};",
+      "in{",
+      "",
+      "  imports = [",
+      "  ];",
+      "",
+      "  options.fgassmann.{{module}} = {",
+      "    enable = lib.mkEnableOption \"enable Flos {{module}} config\";",
+      "  };",
+      "",
+      "  config = lib.mkIf cfg.enable {",
+      "",
+      "  };",
+      "}"
+    ],
+    "description": "Create a new empty nix module"
+  }
+}
