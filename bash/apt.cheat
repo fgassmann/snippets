@@ -1,0 +1,7 @@
+% apt
+
+# List all the files a apt package installed on your system
+dpkg -L <package>
+
+# List all the files a apt package will install on your system\n alternatively `apt-file list package` for packages from repositories
+dpkg --contents <package.deb>

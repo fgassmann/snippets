@@ -1,0 +1,4 @@
+% dnf
+
+# List all the files a dnf package deploys
+dnf repoquery -l <package>

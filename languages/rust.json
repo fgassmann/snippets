@@ -1,0 +1,22 @@
+{
+  "dioxus-component": {
+    "prefix": [
+      "snip-custom-error"
+    ],
+    "scope": "rust",
+    "body": [
+      "#[derive(Debug)]",
+      "struct CustomError {",
+      "    input: String,",
+      "}",
+      "",
+      "impl std::fmt::Display for CustomError {",
+      "    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {",
+      "        write!(f, \"Could not parse hex color: {}\", self.input)",
+      "    }",
+      "}",
+      "impl Error for CustomError {}"
+    ],
+    "description": "A basic Dioxus component."
+  }
+}

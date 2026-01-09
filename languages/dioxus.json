@@ -1,0 +1,29 @@
+{
+  "dioxus-component": {
+    "prefix": [
+      "snip-comp"
+    ],
+    "scope": "rust",
+    "body": [
+      "use dioxus::prelude::*;\n",
+      "#[component]",
+      "pub fn ${1:Element}() -> Element {",
+      "\trsx! {",
+      "\t\tdiv{",
+      "\t\t}",
+      "\t}",
+      "}"
+    ],
+    "description": "A basic Dioxus component."
+  },
+  "dioxus-link": {
+    "prefix": [
+      "snip-link"
+    ],
+    "scope": "rust",
+    "body": [
+      "Link { to: Route::${1:Routname} {}, \"${2:Linktext}\" }"
+    ],
+    "description": "Link to another Dioxus page"
+  }
+}
